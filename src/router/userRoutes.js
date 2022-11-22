@@ -1,6 +1,12 @@
-const router = require('express').Router();
-const controller = require('../controller/usercontroller')
+import express from "express";
+import controller from "../controllers/todo.js";
 
-router.get("/", controller.getAllUsers)
+const router = express.Router();
 
-module.exports = router
+router.get("/", controller.getAllTodos);
+router.post("/", controller.addTodo);
+router.get("/:id", controller.getSingleTodo);
+router.put("/:id", controller.updateTodo);
+router.delete("/:id", controller.deleteTodo);
+
+export default router;

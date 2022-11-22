@@ -1,19 +1,22 @@
-const express = require('express')
-const {json} = require('express')
-const connect = require('./config/database');
-const userRoute = require('./router/userRoutes')
+import express from "express";
+import dotenv from "dotenv";
+import connection from "./database/db.js";
+import todoRoute from "./routes/todo.js"
 
-connect()
+dotenv.config();
 
-const app = express()
-app.use(json())
-app.use("/user", userRoute)
+const app = express();
+const port = process.env.PORT || 3000;
 
+app.use(express.json());
+connection()
 
-const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+	return res.status(200).json({message: "Todo Application is Running"});
+});
 
-app.get("/", (req, res) =>{
-    res.send('zuri task')
-} )
+app.use("/api/todo", todoRoute);
 
-app.listen(PORT, ( )=> console.log (`serving on port ${PORT}`))
+app.listen(port, () => {
+	console.log(`Todo App is listening on http://localhost:${port}`);
+})

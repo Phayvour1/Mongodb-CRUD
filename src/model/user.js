@@ -1,36 +1,15 @@
-const {Schema, model} =  require('mongoose')
+import mongoose from "mongoose";
 
-const userSchema = new Schema ({
-    username: {
-        type: String,
-        required: true,
-        minLength: 3,
-        maxLength: 20,
-    },
+const { Schema } = mongoose;
 
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-
-    },
-    age: {
-        type: Number,
-        default: null,
-    },
-    isUser:{
-        type: Boolean,
-        default: True,
-
-    },
-    isAdmin: {
-        type: Boolean,
-        default: true,
-    },
-
-}, {timestamps: true}
+const todoSchema = new Schema(
+	{
+		title: { type: String, required: true },
+		description: { type: String, required: true },
+	},
+	{ timestamps: true }
 );
 
-const userModel = model('users', userSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
-module.exports = userModel;
+export default Todo;

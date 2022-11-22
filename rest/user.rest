@@ -1,1 +1,25 @@
-GET  http://localhost:3000/user HTTP/1.1
+## GET All Todos GET http://localhost:8000/api/todo HTTP/1.1
+
+###
+
+##Add a new Todo POST http://localhost:8000/api/todo HTTP/1.1 Content-Type: application/json
+
+{
+"title": "Meeting", "description": "Attend the board meeting by 2pm"
+}
+
+###
+
+## Get a Todo by ID GET http://localhost:8000/api/todo/63720d940569518856dd01f3 HTTP/1.1
+
+###
+
+## Update a Todo PUT http://localhost:8000/api/todo/63720d940569518856dd01f3 HTTP/1.1 Content-Type: application/json
+
+{
+"title": " board meeting", "description": "Attend the board meeting by 7pm"
+}
+
+###
+
+## Delete a Todo DELETE http://localhost:8000/api/todo/63720d940569518856dd01f3 HTTP/1.1
